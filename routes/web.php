@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RentLogController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -37,4 +39,7 @@ Route::get('dashboard', [DashboardController::class, 'index'])->middleware( 'onl
 Route::get('profile', [UserController::class, 'profile'])->middleware('only_client');
 
 Route::get('rooms', [RoomController::class, 'index']);
-    });
+Route::get('categories', [CategoryController::class, 'index']);
+Route::get('users', [UserController::class, 'index']);
+Route::get('rent-logs', [RentLogController::class, 'index']);
+});
