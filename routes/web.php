@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RentLogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,14 @@ Route::get('profile', [UserController::class, 'profile'])->middleware('only_clie
 
 Route::get('rooms', [RoomController::class, 'index']);
 Route::get('categories', [CategoryController::class, 'index']);
+Route::get('category-add', [CategoryController::class, 'add']);
+Route::post('category-add', [CategoryController::class, 'store']);
+Route::get('category-edit/{slug}', [CategoryController::class, 'edit']);
+Route::put('category-edit/{slug}',[CategoryController::class, 'upadte']);
+Route::get('category-delete/{slug}', [CategoryController::class, 'delete']);
+Route::get('category-destroy/{slug}', [CategoryController::class, 'destroy']);
+Route::get('category-deleted', [CategoryController::class, 'deletedCategory']);
+Route::get('category-restore/{slug}', [CategoryController::class, 'restore']);
 Route::get('users', [UserController::class, 'index']);
 Route::get('rent-logs', [RentLogController::class, 'index']);
 });
