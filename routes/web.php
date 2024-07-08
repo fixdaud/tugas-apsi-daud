@@ -40,6 +40,15 @@ Route::get('dashboard', [DashboardController::class, 'index'])->middleware( 'onl
 Route::get('profile', [UserController::class, 'profile'])->middleware('only_client');
 
 Route::get('rooms', [RoomController::class, 'index']);
+Route::get('room-add', [RoomController::class, 'add']);
+Route::post('room-add', [RoomController::class, 'store']);
+Route::get('room-edit/{slug}', [RoomController::class, 'edit']);
+Route::post('room-edit/{slug}', [RoomController::class, 'update']);
+Route::get('room-delete/{slug}', [RoomController::class, 'delete']);
+Route::get('room-destroy/{slug}', [RoomController::class, 'destroy']);
+Route::get('room-deleted', [RoomController::class, 'deletedRoom']);
+Route::get('room-restore/{slug}', [RoomController::class, 'restore']);
+
 Route::get('categories', [CategoryController::class, 'index']);
 Route::get('category-add', [CategoryController::class, 'add']);
 Route::post('category-add', [CategoryController::class, 'store']);

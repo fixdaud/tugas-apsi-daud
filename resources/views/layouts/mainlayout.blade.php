@@ -15,7 +15,7 @@
     <div class="main d-flex flex-column justify-content-between">
         <nav class="navbar navbar-dark navbar-expand-lg bg-primary">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">KosanKu</a>
+              <a class="navbar-brand" href="#">Buku Terpadu.</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -28,19 +28,19 @@
                     
                         @if (Auth::user()->role_id == 1)
                             
-                        <a href="dashboard" @if(request()->route()->uri == 'dashboard') class="active" @endif>Dashboard</a>
+                        <a href="/dashboard" @if(request()->route()->uri == 'dashboard') class="active" @endif>Dashboard</a>
 
-                        <a href="rooms" @if(request()->route()->uri == 'rooms') class="active" @endif>Rooms</a>
+                        <a href="/rooms" @if(request()->route()->uri == 'rooms'|| request()->route()->uri == 'room-add' || request()->route()->uri == 'room-deleted' || request()->route()->uri == 'room-edit/{slug}' || request()->route()->uri == 'room-delete/{slug}') class="active" @endif>Books</a>
 
-                        <a href="categories" @if(request()->route()->uri == 'categories' || request()->route()->uri == 'category-add' || request()->route()->uri == 'category-deleted' || request()->route()->uri == 'category-edit/{slug}' || request()->route()->uri == 'category-delete/{slug}' ) class="active" @endif>Categories</a>
-                        <a href="users"@if(request()->route()->uri == 'users') class="active" @endif>Users</a>
-                        <a href="rent-logs" @if(request()->route()->uri == 'rent-logs') class="active" @endif>Rent Log</a>
-                        <a href="logout">Logout</a>
+                        <a href="/categories" @if(request()->route()->uri == 'categories' || request()->route()->uri == 'category-add' || request()->route()->uri == 'category-deleted' || request()->route()->uri == 'category-edit/{slug}' || request()->route()->uri == 'category-delete/{slug}' ) class="active" @endif>Categories</a>
+                        <a href="/users"@if(request()->route()->uri == 'users') class="active" @endif>Users</a>
+                        <a href="/rent-logs" @if(request()->route()->uri == 'rent-logs') class="active" @endif>Rent Log</a>
+                        <a href="/logout">Logout</a>
 
                         @else
 
-                        <a href="profile" @if(request()->route()->uri == 'profile') class="active" @endif>Profile</a>
-                        <a href="logout">Logout</a>
+                        <a href="/profile" @if(request()->route()->uri == 'profile') class="active" @endif>Profile</a>
+                        <a href="/logout">Logout</a>
                         @endif  
                 </div>
                 <div class="content p-5 col-lg-10">
