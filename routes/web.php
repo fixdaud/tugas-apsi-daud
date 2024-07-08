@@ -1,13 +1,15 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PublicController;
 use App\Http\Controllers\RentLogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RoomRentController;
 use App\Http\Controllers\DashboardController;
-use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,7 @@ use App\Models\Category;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth');
+Route::get('/', [PublicController::class, 'index']);
 
 Route::middleware('only_guest')->group(
     function () {
@@ -36,9 +36,10 @@ Route::middleware('only_guest')->group(
 Route::middleware('auth')->group(
     function () {
 Route::get('logout', [AuthController::class, 'logout']);
-Route::get('dashboard', [DashboardController::class, 'index'])->middleware( 'only_admin');
 Route::get('profile', [UserController::class, 'profile'])->middleware('only_client');
 
+Route::middleware('only_admin')->group(function(){
+Route::get('dashboard', [DashboardController::class, 'index']);
 Route::get('rooms', [RoomController::class, 'index']);
 Route::get('room-add', [RoomController::class, 'add']);
 Route::post('room-add', [RoomController::class, 'store']);
@@ -58,6 +59,15 @@ Route::get('category-delete/{slug}', [CategoryController::class, 'delete']);
 Route::get('category-destroy/{slug}', [CategoryController::class, 'destroy']);
 Route::get('category-deleted', [CategoryController::class, 'deletedCategory']);
 Route::get('category-restore/{slug}', [CategoryController::class, 'restore']);
+
 Route::get('users', [UserController::class, 'index']);
+Route::get('registered-users', [UserController::class, 'registeredUser']);
+Route::get('user-detail/{slug}', [UserController::class, 'show']);
+Route::get('user-approve/{slug}', [UserController::class, 'approve']);
+
+Route::get('room-rent', [RoomRentController::class, 'index']);
+});
+
+
 Route::get('rent-logs', [RentLogController::class, 'index']);
 });

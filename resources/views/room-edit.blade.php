@@ -23,12 +23,12 @@
         @csrf
         <div class="mb-3">
             <label for="number" class="form-label">Number</label>
-            <input type="text" name="room_number" id="number" class="form-control" placeholder="Room Number" value="{{$room->room_number}}">
+            <input type="text" name="room_number" id="number" class="form-control" placeholder="Book Code" value="{{$room->room_number}}">
         </div>
         @csrf
         <div class="mb-3">
             <label for="Title" class="form-label">Title</label>
-            <input type="text" name="title" id="title" class="form-control" placeholder="Room Title" {{$room->title}}>
+            <input type="text" name="title" id="title" class="form-control" placeholder="Book Title" {{$room->title}}>
         </div>
         @csrf
         <div>

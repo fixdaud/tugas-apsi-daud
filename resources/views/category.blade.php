@@ -4,7 +4,7 @@
 
     
 @section('content')
-<h1> Room Category</h1>
+<h1> Book Category</h1>
 
 <div class="mt-5 d-flex justify-content-end">
     <a href="category-add" class="btn btn-primary me-3">Add Data</a>

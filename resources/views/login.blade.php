@@ -31,7 +31,10 @@
     @endif
     <div class="login-box">
         <form action="" method="post">
-            @csrf 
+            @csrf
+            <div class="mb-3">
+                <label for=" class="form-label">untuk admin tidak bisa register, gunakanan username :admin|| pass:12345678</label>
+                
             <div>
                 <label for="username" class="form-label">Username</label>
                 <input type="text" name="username" id="username" class="form-control" required>
