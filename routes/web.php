@@ -66,6 +66,8 @@ Route::get('user-detail/{slug}', [UserController::class, 'show']);
 Route::get('user-approve/{slug}', [UserController::class, 'approve']);
 
 Route::get('room-rent', [RoomRentController::class, 'index']);
+Route::post('room-rent', [RoomRentController::class, 'store']);
+
 });
 
 
